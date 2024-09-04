@@ -1,26 +1,95 @@
 package cinema.house.project
 
+import MovieAppBar
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import cinemahouse.composeapp.generated.resources.Res
 import cinemahouse.composeapp.generated.resources.compose_multiplatform
 import com.example.compose.lightScheme
+import androidx.compose.material.rememberScaffoldState
+import androidx.navigation.NavHost
+import androidx.navigation.compose.currentBackStackEntryAsState
+import cinema.house.project.widgets.Home
+import cinema.house.project.widgets.movieDestinations
 
 @Composable
 @Preview
+
+
 fun App() {
-    MaterialTheme(colorScheme = lightScheme) {
-        
+    val navController = rememberNavController()
+
+    val scaffoldState = rememberScaffoldState()
+
+    val isSystemDark = isSystemInDarkTheme()
+    val statusBarColor = if (isSystemDark){
+        MaterialTheme.colors.primaryVariant
+    }else {
+        Color.Transparent
+    }
+    SideEffect {
+        systemUiController.setStatusBarColor(statusBarColor, darkIcons = !isSystemDark)
+    }
+
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = movieDestinations.find {
+        backStackEntry?.destination?.route == it.route ||
+                backStackEntry?.destination?.route == it.routeWithArgs
+    }?: Home
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = {
+            MovieAppBar(
+                canNavigateBack = navController.previousBackStackEntry != null,
+                currentScreen = currentScreen
+            ) {
+                navController.navigateUp()
+            }
+        }
+    ) {innerPaddings ->
+        NavHost(
+            navController = navController,
+            modifier = Modifier.padding(innerPaddings),
+            startDestination = Home.routeWithArgs
+        ){
+//            composable(Home.routeWithArgs){
+//                val homeViewModel: HomeViewModel = koinViewModel()
+//                HomeScreen(
+//                    uiState = homeViewModel.uiState,
+//                    loadNextMovies = {
+//                                     homeViewModel.loadMovies(forceReload = it)
+//                    },
+//                    navigateToDetail = {
+//                        navController.navigate(
+//                            "${Detail.route}/${it.id}"
+//                        )
+//                    }
+//                )
+//            }
+
+//            composable(Detail.routeWithArgs, arguments = Detail.arguments){
+//                val movieId = it.arguments?.getInt("movieId") ?: 0
+//                val detailViewModel: DetailViewModel = koinViewModel(
+//                    parameters = { parametersOf(movieId) }
+//                )
+//
+//                DetailScreen(uiState = detailViewModel.uiState)
+//            }
+        }
+
     }
 }
