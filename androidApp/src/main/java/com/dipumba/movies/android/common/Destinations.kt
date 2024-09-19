@@ -1,4 +1,4 @@
-package cinema.house.project.widgets
+package com.demo.movies.android.common
 
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
