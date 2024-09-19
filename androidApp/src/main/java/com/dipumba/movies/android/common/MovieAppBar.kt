@@ -1,15 +1,14 @@
+package com.demo.movies.android.common
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cinema.house.project.widgets.Destination
-import com.example.compose.secondaryLight
-import com.example.ui.theme.AppTypography
 
 @Composable
 fun MovieAppBar(
@@ -22,8 +21,8 @@ fun MovieAppBar(
         modifier = modifier
             .fillMaxWidth()
             .height(56.dp),
-        
-        color = androidx.compose.ui.graphics.Color.Red,
+        elevation = 4.dp,
+        color = MaterialTheme.colors.primary
     ) {
         Row(
             modifier = modifier.padding(start = 8.dp),
@@ -34,6 +33,7 @@ fun MovieAppBar(
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = null,
+                        tint = MaterialTheme.colors.onBackground
                     )
                 }
                 Spacer(modifier = modifier.width(24.dp))
@@ -41,9 +41,9 @@ fun MovieAppBar(
 
             Text(
                 text = currentScreen.title,
-                style = AppTypography.bodySmall,
+                style = MaterialTheme.typography.h6,
                 modifier = modifier.padding(12.dp),
-                color = secondaryLight
+                color = MaterialTheme.colors.onSurface
             )
         }
     }
