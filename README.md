@@ -1,21 +1,13 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
+# KMMMovieApp
+Kotlin Multiplatform Movie App
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+Watch the video series on my Youtube Channel: [https://www.youtube.com/MrDipCoding](https://www.youtube.com/channel/UCsBGPHU-_WdeK7KDeFTjBJA)
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+# Screenshots
+
+![Alt text](https://user-images.githubusercontent.com/76696960/220892154-4f140408-c04b-4d2a-a2f4-de284d556b0f.png)
+![Alt text](https://user-images.githubusercontent.com/76696960/220892148-e9d445b3-9fbb-4849-b0da-352db1cb3779.png)
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
-
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
-
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+![Alt text](https://user-images.githubusercontent.com/76696960/220892140-d301c832-c0c5-470f-8e30-c18b9cd2bb23.png)
+![Alt text](https://user-images.githubusercontent.com/76696960/220892123-e65686df-bb7d-4b35-80f9-d97304f4ec12.png)

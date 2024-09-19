@@ -1,2 +1,0 @@
-package cinema.house.project
-
